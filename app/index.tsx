@@ -9,7 +9,14 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+      <Text
+        style={{
+          fontSize: 28,
+          fontFamily: "Pally-Bold",
+        }}
+      >
+        Welcome to PetAdopt
+      </Text>
     </View>
   );
 }
