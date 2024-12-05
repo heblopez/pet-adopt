@@ -1,7 +1,45 @@
-import Colors from "@/constants/Colors";
+import { useCallback, useEffect } from "react";
 import { View, Text, Image, Pressable } from "react-native";
+import * as WebBrowser from "expo-web-browser";
+import * as Linking from "expo-linking";
+import { useOAuth } from "@clerk/clerk-expo";
+import Colors from "@/constants/Colors";
+
+export const useWarmUpBrowser = () => {
+  useEffect(() => {
+    void WebBrowser.warmUpAsync();
+    return () => {
+      void WebBrowser.coolDownAsync();
+    };
+  }, []);
+};
+
+WebBrowser.maybeCompleteAuthSession();
 
 export default function Login() {
+  useWarmUpBrowser();
+
+  const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
+  const redirectUrl = Linking.createURL("/home", { scheme: "myapp" });
+
+  const onPress = useCallback(async () => {
+    try {
+      const { createdSessionId, signIn, signUp, setActive } =
+        await startOAuthFlow({
+          redirectUrl,
+        });
+
+      if (createdSessionId) {
+        setActive!({ session: createdSessionId });
+        Linking.openURL(redirectUrl);
+      } else {
+        // Use signIn or signUp for next steps such as MFA
+      }
+    } catch (err) {
+      console.error("OAuth error", err);
+    }
+  }, []);
+
   return (
     <View style={{ backgroundColor: "#FAF8F6", flex: 1 }}>
       <Image
@@ -50,6 +88,7 @@ export default function Login() {
             width: "90%",
             marginTop: 48,
           }}
+          onPress={onPress}
         >
           <Text
             style={{
