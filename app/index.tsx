@@ -1,4 +1,5 @@
-import { Link, useRootNavigationState } from "expo-router";
+import { useUser } from "@clerk/clerk-expo";
+import { Link, Redirect, useRootNavigationState } from "expo-router";
 import { useEffect } from "react";
 import { Text, View } from "react-native";
 
@@ -15,6 +16,8 @@ export default function Index() {
     checkNavLoaded();
   }, []);
 
+  const { user } = useUser();
+
   return (
     <View
       style={{
@@ -23,20 +26,7 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text
-        style={{
-          fontSize: 28,
-          fontFamily: "Pally-Bold",
-        }}
-      >
-        Welcome to PetAdopt
-      </Text>
-      <Link href={"/login"}>
-        <Text style={{ fontSize: 18, color: "blue" }}>Go to Login</Text>
-      </Link>
-      <Link href={"/home"}>
-        <Text style={{ fontSize: 18, color: "blue" }}>Go to Home</Text>
-      </Link>
+      {user ? <Redirect href={"/(tabs)/home"} /> : <Redirect href={"/login"} />}
     </View>
   );
 }

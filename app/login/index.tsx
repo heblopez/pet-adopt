@@ -20,7 +20,7 @@ export default function Login() {
   useWarmUpBrowser();
 
   const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
-  const redirectUrl = Linking.createURL("/home", { scheme: "myapp" });
+  const redirectUrl = Linking.createURL("/(tabs)/home", { scheme: "myapp" });
 
   const onPress = useCallback(async () => {
     try {
