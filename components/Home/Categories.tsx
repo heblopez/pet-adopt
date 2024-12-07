@@ -1,5 +1,6 @@
 import Colors from "@/constants/Colors";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { useState } from "react";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 
 export default function Categories() {
   const categories = [
@@ -11,6 +12,8 @@ export default function Categories() {
     },
     { name: "Fish", imageUrl: require("../../assets/images/fish-icon.png") },
   ];
+
+  const [selectedCategory, setSelectedCategory] = useState("Dogs");
 
   return (
     <View style={{ marginBlock: 16 }}>
@@ -29,7 +32,14 @@ export default function Categories() {
       >
         {categories.map((category, index) => (
           <View style={styles.container} key={index}>
-            <View style={styles.containerImg}>
+            <TouchableOpacity
+              style={[
+                styles.containerImg,
+                category.name === selectedCategory && styles.selectedCategory,
+              ]}
+              onPress={() => setSelectedCategory(category.name)}
+              activeOpacity={0.7}
+            >
               <Image
                 source={category.imageUrl}
                 style={{
@@ -37,7 +47,7 @@ export default function Categories() {
                   height: 40,
                 }}
               />
-            </View>
+            </TouchableOpacity>
             <Text style={{ fontSize: 14, fontFamily: "SF-Pro-Regular" }}>
               {category.name}
             </Text>
@@ -56,10 +66,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   containerImg: {
-    backgroundColor: Colors.secondary,
+    backgroundColor: Colors.light,
     padding: 14,
     borderWidth: 2,
     borderColor: Colors.foreground,
     borderRadius: 99,
+  },
+  selectedCategory: {
+    backgroundColor: Colors.secondary,
   },
 });
