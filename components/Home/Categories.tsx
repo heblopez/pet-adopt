@@ -1,6 +1,50 @@
 import Colors from "@/constants/Colors";
 import { useState } from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  FlatList,
+  Dimensions,
+} from "react-native";
+import PetItem from "./PetItem";
+
+const dataPets = [
+  {
+    name: "Zeus",
+    category: "Dogs",
+    imageUrl:
+      "https://spotpet.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fm5ehn3s5t7ec%2Fwp-image-197858%2F7746c729ddf5a2a730f17999268362de%2FLabrador-Retriever-Dog-Breed-Guide.jpg&w=1200&q=75",
+    breed: "Labrador",
+    age: 4,
+  },
+  {
+    name: "Figaro",
+    category: "Cats",
+    imageUrl:
+      "https://spotpet.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fm5ehn3s5t7ec%2Fwp-image-197219%2Fadadb5218e0bc3445222ef21e8e931d5%2FBengal-Cat-Breed-Guide.jpg&w=1200&q=75",
+    breed: "Bengal",
+    age: 3,
+  },
+  {
+    name: "Hamlet",
+    category: "Hamsters",
+    imageUrl:
+      "https://www.reptilecymru.co.uk/wp-content/uploads/2021/03/Syrian-Hamster-.png",
+    breed: "Syrian",
+    age: 1,
+  },
+  {
+    name: "Nemo",
+    category: "Fish",
+    imageUrl:
+      "https://i.pinimg.com/736x/24/7f/ae/247fae125ccd5c0966848b67b3b2389b.jpg",
+    breed: "Clownfish",
+    age: 2,
+  },
+];
 
 export default function Categories() {
   const categories = [
@@ -28,6 +72,7 @@ export default function Categories() {
           flexDirection: "row",
           justifyContent: "space-between",
           width: "100%",
+          marginBottom: 24,
         }}
       >
         {categories.map((category, index) => (
@@ -54,6 +99,16 @@ export default function Categories() {
           </View>
         ))}
       </View>
+      <FlatList
+        data={dataPets}
+        renderItem={({ item }) => <PetItem pet={item} />}
+        keyExtractor={(_item, index) => index.toString()}
+        contentContainerStyle={{
+          flexGrow: 1,
+        }}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+      />
     </View>
   );
 }
