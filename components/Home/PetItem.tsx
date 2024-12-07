@@ -15,7 +15,9 @@ export default function PetItem({ pet }: { pet: Pet }) {
       <Image source={{ uri: pet.imageUrl }} style={styles.image} />
       <Text style={styles.name}>{pet.name}</Text>
       <View style={styles.wrapperBreedAge}>
-        <Text style={styles.breed}>{pet.breed}</Text>
+        <Text style={styles.breed} numberOfLines={1}>
+          {pet.breed}
+        </Text>
         <Text style={styles.age}>{pet.age} yrs</Text>
       </View>
     </View>
@@ -51,6 +53,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: "SF-Pro-Regular",
     color: Colors.gray,
+    maxWidth: 90,
   },
   age: {
     fontSize: 12,

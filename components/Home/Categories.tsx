@@ -7,7 +7,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   FlatList,
-  Dimensions,
 } from "react-native";
 import PetItem from "./PetItem";
 
@@ -17,7 +16,7 @@ const dataPets = [
     category: "Dogs",
     imageUrl:
       "https://spotpet.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fm5ehn3s5t7ec%2Fwp-image-197858%2F7746c729ddf5a2a730f17999268362de%2FLabrador-Retriever-Dog-Breed-Guide.jpg&w=1200&q=75",
-    breed: "Labrador",
+    breed: "Labrador Retriever",
     age: 4,
   },
   {
