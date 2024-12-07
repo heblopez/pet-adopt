@@ -1,5 +1,6 @@
 import Colors from "@/constants/Colors";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { useRouter } from "expo-router";
+import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 
 interface Pet {
   name: string;
@@ -10,8 +11,14 @@ interface Pet {
 }
 
 export default function PetItem({ pet }: { pet: Pet }) {
+  const router = useRouter();
   return (
-    <View style={styles.wrapper}>
+    <Pressable
+      style={styles.wrapper}
+      onPress={() =>
+        router.push({ pathname: "/pet-details", params: { ...pet } })
+      }
+    >
       <Image source={{ uri: pet.imageUrl }} style={styles.image} />
       <Text style={styles.name}>{pet.name}</Text>
       <View style={styles.wrapperBreedAge}>
@@ -20,7 +27,7 @@ export default function PetItem({ pet }: { pet: Pet }) {
         </Text>
         <Text style={styles.age}>{pet.age} yrs</Text>
       </View>
-    </View>
+    </Pressable>
   );
 }
 

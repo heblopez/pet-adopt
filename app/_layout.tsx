@@ -56,6 +56,10 @@ export default function RootLayout() {
         <Stack.Screen name="index" />
         <Stack.Screen name="login/index" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="pet-details/index"
+          options={{ headerShown: false }}
+        />
       </Stack>
     </ClerkProvider>
   );
