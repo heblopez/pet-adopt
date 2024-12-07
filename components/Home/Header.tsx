@@ -12,7 +12,7 @@ export default function Header() {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        marginBlock: 16,
+        marginBlock: 12,
       }}
     >
       <View style={{ display: "flex", flexDirection: "column", gap: 4 }}>

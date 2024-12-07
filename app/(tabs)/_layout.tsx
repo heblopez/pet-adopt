@@ -7,7 +7,7 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors.secondary,
+        tabBarActiveTintColor: Colors.primary,
         tabBarLabelStyle: { fontSize: 12, fontFamily: "SF-Pro-Medium" },
       }}
     >

@@ -8,7 +8,7 @@ export default function Slider() {
   ];
 
   return (
-    <View style={{ marginBlock: 12 }}>
+    <View style={{ marginBlock: 8 }}>
       <FlatList
         data={images}
         horizontal

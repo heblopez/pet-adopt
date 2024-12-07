@@ -33,9 +33,9 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 140,
-    height: 140,
-    borderRadius: 8,
-    objectFit: "cover",
+    height: 120,
+    borderRadius: 4,
+    resizeMode: "cover",
   },
   name: {
     fontSize: 18,
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   },
   age: {
     fontSize: 12,
-    fontFamily: "SF-Pro-Regular",
+    fontFamily: "SF-Pro-Bold",
     color: Colors.primary,
     backgroundColor: Colors.light,
     borderRadius: 12,

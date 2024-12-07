@@ -47,7 +47,7 @@ export default function Login() {
         style={{
           width: "100%",
           height: 399,
-          objectFit: "cover",
+          resizeMode: "cover",
           marginTop: 50,
         }}
       />

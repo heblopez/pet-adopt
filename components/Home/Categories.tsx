@@ -59,7 +59,7 @@ export default function Categories() {
   const [selectedCategory, setSelectedCategory] = useState("Dogs");
 
   return (
-    <View style={{ marginBlock: 16 }}>
+    <View style={{ marginBlock: 8 }}>
       <Text
         style={{ fontSize: 24, fontFamily: "Pally-Bold", marginBottom: 20 }}
       >
