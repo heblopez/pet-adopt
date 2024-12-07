@@ -28,8 +28,8 @@ export default function Categories() {
         }}
       >
         {categories.map((category, index) => (
-          <View style={styles.container}>
-            <View style={styles.containerImg} key={index}>
+          <View style={styles.container} key={index}>
+            <View style={styles.containerImg}>
               <Image
                 source={category.imageUrl}
                 style={{
