@@ -7,4 +7,5 @@ export interface Pet {
   address: string;
   sex: string;
   weight: number;
+  about: string;
 }

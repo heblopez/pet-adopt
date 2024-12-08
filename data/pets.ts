@@ -9,6 +9,8 @@ export const dataPets = [
     address: "777 Main St, New York, NY 10010",
     sex: "Male",
     weight: 12,
+    about:
+      "Zeus is a friendly and outgoing dog who loves to play with his owners. He is a loyal companion and always willing to help out with any tasks or chores that come his way. Zeus is a great companion and a loyal friend.",
   },
   {
     name: "Kitty",
@@ -20,6 +22,8 @@ export const dataPets = [
     address: "123 North St, New York, NY 10010",
     sex: "Female",
     weight: 4.5,
+    about:
+      "Kitty is a sweet and affectionate cat who loves to play with her owners. She is a loyal companion and always willing to help out with any tasks or chores that come her way. Kitty is a great companion and a loyal friend.",
   },
   {
     name: "Hamlet",
@@ -31,6 +35,8 @@ export const dataPets = [
     address: "456 Central Ave, Los Angeles, CA 90010",
     sex: "Male",
     weight: 1,
+    about:
+      "Hamlet is a friendly and outgoing hamster who loves to play with his owners. He is a loyal companion and always willing to help out with any tasks or chores that come his way. Hamlet is a great companion and a loyal friend.",
   },
   {
     name: "Nemo",
@@ -42,6 +48,8 @@ export const dataPets = [
     address: "345 Ocean Ave, Miami, FL 33139",
     sex: "Female",
     weight: 0.5,
+    about:
+      "Nemo is a friendly and outgoing fish who loves to play with his owners. He is a loyal companion and always willing to help out with any tasks or chores that come his way. Nemo is a great companion and a loyal friend.",
   },
   {
     name: "Benji",
@@ -53,6 +61,8 @@ export const dataPets = [
     address: "369 Atlantic St, New York, NY 10010",
     sex: "Male",
     weight: 7,
+    about:
+      "Benji is a friendly and outgoing dog who loves to play with his owners. He is a loyal companion and always willing to help out with any tasks or chores that come his way. Benji is a great companion and a loyal friend.",
   },
   {
     name: "Rex",
@@ -64,5 +74,7 @@ export const dataPets = [
     address: "789 Broadway St, New York, NY 10010",
     sex: "Male",
     weight: 4,
+    about:
+      "Rex is a friendly and outgoing dog who loves to play with his owners. He is a loyal companion and always willing to help out with any tasks or chores that come his way. Rex is a great companion and a loyal friend.",
   },
 ];
