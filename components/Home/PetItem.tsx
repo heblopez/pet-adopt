@@ -1,14 +1,7 @@
 import Colors from "@/constants/Colors";
 import { useRouter } from "expo-router";
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
-
-interface Pet {
-  name: string;
-  imageUrl: string;
-  category: string;
-  breed: string;
-  age: number;
-}
+import { Pet } from "@/types";
 
 export default function PetItem({ pet }: { pet: Pet }) {
   const router = useRouter();

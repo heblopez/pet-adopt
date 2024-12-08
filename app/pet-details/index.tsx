@@ -1,21 +1,19 @@
-import Colors from "@/constants/Colors";
+import { ScrollView } from "react-native";
 import { useLocalSearchParams } from "expo-router";
-import { ScrollView, Text } from "react-native";
+import PetInfo from "@/components/PetDetails/PetInfo";
+import Colors from "@/constants/Colors";
+import { Pet } from "@/types";
 
 export default function PetDetails() {
-  const pet = useLocalSearchParams();
+  const pet = useLocalSearchParams() as unknown as Pet;
   return (
     <ScrollView
       style={{
         flex: 1,
-        padding: 24,
-        paddingTop: 48,
         backgroundColor: Colors.background,
       }}
     >
-      <Text>Pet Details</Text>
-      <Text>{JSON.stringify(pet)}</Text>
-      {/* Pet Info */}
+      <PetInfo pet={pet} />
       {/* Pet Properties */}
       {/* About */}
       {/* Owner Details */}
