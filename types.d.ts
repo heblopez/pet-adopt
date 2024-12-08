@@ -9,12 +9,8 @@ export interface Pet {
   sex: string;
   weight: number;
   about: string;
-  owner: User;
-}
-
-export interface User {
   userId: number;
-  fullName: string;
-  email: string;
-  imageUrl: string;
+  userFullName: string;
+  userEmail: string;
+  userImageUrl: string;
 }

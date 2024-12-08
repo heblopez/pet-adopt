@@ -12,13 +12,11 @@ export const dataPets = [
     weight: 12,
     about:
       "Zeus is a friendly and outgoing dog who loves to play with his owners. He is a loyal companion and always willing to help out with any tasks or chores that come his way. Zeus is a great companion and a loyal friend.",
-    owner: {
-      userId: 1,
-      fullName: "John Doe",
-      email: "johndoe@example.com",
-      imageUrl:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-    },
+    userId: 1,
+    userFullName: "John Doe",
+    userEmail: "johndoe@example.com",
+    userImageUrl:
+      "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     petId: 2,
@@ -33,13 +31,11 @@ export const dataPets = [
     weight: 4.5,
     about:
       "Kitty is a sweet and affectionate cat who loves to play with her owners. She is a loyal companion and always willing to help out with any tasks or chores that come her way. Kitty is a great companion and a loyal friend.",
-    owner: {
-      userId: 2,
-      fullName: "Jane Doe",
-      email: "janedoe@example.com",
-      imageUrl:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-    },
+    userId: 2,
+    userFullName: "Jane Doe",
+    userEmail: "janedoe@example.com",
+    userImageUrl:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     petId: 3,
@@ -54,13 +50,11 @@ export const dataPets = [
     weight: 1,
     about:
       "Hamlet is a friendly and outgoing hamster who loves to play with his owners. He is a loyal companion and always willing to help out with any tasks or chores that come his way. Hamlet is a great companion and a loyal friend.",
-    owner: {
-      userId: 3,
-      fullName: "Emily Chen",
-      email: "emilychen@example.com",
-      imageUrl:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-    },
+    userId: 3,
+    userFullName: "Emily Chen",
+    userEmail: "emilychen@example.com",
+    userImageUrl:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=922&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     name: "Nemo",
@@ -74,13 +68,11 @@ export const dataPets = [
     weight: 0.5,
     about:
       "Nemo is a friendly and outgoing fish who loves to play with his owners. He is a loyal companion and always willing to help out with any tasks or chores that come his way. Nemo is a great companion and a loyal friend.",
-    owner: {
-      userId: 4,
-      fullName: "Michael Smith",
-      email: "michaelsmith@example.com",
-      imageUrl:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-    },
+    userId: 4,
+    userFullName: "Michael Smith",
+    userEmail: "michaelsmith@example.com",
+    userImageUrl:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     name: "Benji",
@@ -94,13 +86,11 @@ export const dataPets = [
     weight: 7,
     about:
       "Benji is a friendly and outgoing dog who loves to play with his owners. He is a loyal companion and always willing to help out with any tasks or chores that come his way. Benji is a great companion and a loyal friend.",
-    owner: {
-      userId: 5,
-      fullName: "Jessica Johnson",
-      email: "jessicajohnson@example.com",
-      imageUrl:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-    },
+    userId: 5,
+    userFullName: "Andrew Johnson",
+    userEmail: "andrewjohnson@example.com",
+    userImageUrl:
+      "https://images.unsplash.com/photo-1521341957697-b93449760f30?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     name: "Rex",
@@ -114,12 +104,10 @@ export const dataPets = [
     weight: 4,
     about:
       "Rex is a friendly and outgoing dog who loves to play with his owners. He is a loyal companion and always willing to help out with any tasks or chores that come his way. Rex is a great companion and a loyal friend.",
-    owner: {
-      userId: 6,
-      fullName: "Sarah Lee",
-      email: "sarahlee@example.com",
-      imageUrl:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-    },
+    userId: 6,
+    userFullName: "Sarah Lee",
+    userEmail: "sarahlee@example.com",
+    userImageUrl:
+      "https://plus.unsplash.com/premium_photo-1664475459035-59f78abf2220?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];

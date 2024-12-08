@@ -5,6 +5,7 @@ import Colors from "@/constants/Colors";
 import { Pet } from "@/types";
 import PetSubInfo from "@/components/PetDetails/PetSubInfo";
 import AboutPet from "@/components/PetDetails/AboutPet";
+import OwnerInfo from "@/components/PetDetails/OwnerInfo";
 
 export default function PetDetails() {
   const pet = useLocalSearchParams() as unknown as Pet;
@@ -18,7 +19,10 @@ export default function PetDetails() {
       <PetInfo pet={pet} />
       <PetSubInfo pet={pet} />
       <AboutPet content={pet.about} />
-      {/* Owner Details */}
+      <OwnerInfo
+        userFullName={pet.userFullName}
+        userImageUrl={pet.userImageUrl}
+      />
       {/* Adopt me button */}
     </ScrollView>
   );
