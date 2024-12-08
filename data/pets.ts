@@ -7,24 +7,30 @@ export const dataPets = [
     breed: "Labrador Retriever",
     age: 4,
     address: "777 Main St, New York, NY 10010",
+    sex: "Male",
+    weight: 12,
   },
   {
-    name: "Figaro",
+    name: "Kitty",
     category: "Cats",
     imageUrl:
       "https://spotpet.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fm5ehn3s5t7ec%2Fwp-image-197219%2Fadadb5218e0bc3445222ef21e8e931d5%2FBengal-Cat-Breed-Guide.jpg&w=1200&q=75",
     breed: "Bengal",
     age: 3,
     address: "123 North St, New York, NY 10010",
+    sex: "Female",
+    weight: 4.5,
   },
   {
     name: "Hamlet",
     category: "Hamsters",
     imageUrl:
-      "https://www.reptilecymru.co.uk/wp-content/uploads/2021/03/Syrian-Hamster-.png",
+      "https://www.petscorner.co.uk/Images/Article/large/pc-ah-article-sa-syrian-hamster.jpg",
     breed: "Syrian",
     age: 1,
     address: "456 Central Ave, Los Angeles, CA 90010",
+    sex: "Male",
+    weight: 1,
   },
   {
     name: "Nemo",
@@ -34,6 +40,8 @@ export const dataPets = [
     breed: "Clownfish",
     age: 2,
     address: "345 Ocean Ave, Miami, FL 33139",
+    sex: "Female",
+    weight: 0.5,
   },
   {
     name: "Benji",
@@ -43,6 +51,8 @@ export const dataPets = [
     breed: "Jack Russel Terrier",
     age: 2,
     address: "369 Atlantic St, New York, NY 10010",
+    sex: "Male",
+    weight: 7,
   },
   {
     name: "Rex",
@@ -52,5 +62,7 @@ export const dataPets = [
     breed: "German Shepherd",
     age: 1,
     address: "789 Broadway St, New York, NY 10010",
+    sex: "Male",
+    weight: 4,
   },
 ];

@@ -3,6 +3,7 @@ import { useLocalSearchParams } from "expo-router";
 import PetInfo from "@/components/PetDetails/PetInfo";
 import Colors from "@/constants/Colors";
 import { Pet } from "@/types";
+import PetSubInfo from "@/components/PetDetails/PetSubInfo";
 
 export default function PetDetails() {
   const pet = useLocalSearchParams() as unknown as Pet;
@@ -14,7 +15,7 @@ export default function PetDetails() {
       }}
     >
       <PetInfo pet={pet} />
-      {/* Pet Properties */}
+      <PetSubInfo pet={pet} />
       {/* About */}
       {/* Owner Details */}
       {/* Adopt me button */}
