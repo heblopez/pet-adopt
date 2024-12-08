@@ -22,6 +22,7 @@ export default function PetDetails() {
       <OwnerInfo
         userFullName={pet.userFullName}
         userImageUrl={pet.userImageUrl}
+        userEmail={pet.userEmail}
       />
       {/* Adopt me button */}
     </ScrollView>
