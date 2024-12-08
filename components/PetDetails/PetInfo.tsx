@@ -8,9 +8,9 @@ export default function PetInfo({ pet }: { pet: Pet }) {
     <View>
       <Image source={{ uri: pet.imageUrl }} style={styles.image} />
       <View style={styles.wrapper}>
-        <View style={styles.wrapperNameAddress}>
+        <View style={styles.wrapperNameLocation}>
           <Text style={styles.name}>{pet.name}</Text>
-          <Text style={styles.address}>{pet.address}</Text>
+          <Text style={styles.location}>{pet.location}</Text>
         </View>
         <AntDesign name="hearto" size={28} color={Colors.secondary} />
       </View>
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
-  wrapperNameAddress: {
+  wrapperNameLocation: {
     display: "flex",
     flexDirection: "column",
     gap: 8,
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontFamily: "Pally-Bold",
   },
-  address: {
+  location: {
     fontSize: 14,
     fontFamily: "SF-Pro-Regular",
     color: Colors.gray,
