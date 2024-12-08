@@ -60,7 +60,7 @@ export default function Categories() {
     { name: "Fish", imageUrl: require("../../assets/images/fish-icon.png") },
   ];
 
-  const [selectedCategory, setSelectedCategory] = useState("Dogs");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   return (
     <View style={{ marginBlock: 8 }}>
@@ -85,7 +85,11 @@ export default function Categories() {
                 styles.containerImg,
                 category.name === selectedCategory && styles.selectedCategory,
               ]}
-              onPress={() => setSelectedCategory(category.name)}
+              onPress={() => {
+                setSelectedCategory((prev) =>
+                  prev === category.name ? null : category.name
+                );
+              }}
               activeOpacity={0.7}
             >
               <Image
@@ -103,7 +107,11 @@ export default function Categories() {
         ))}
       </View>
       <FlatList
-        data={dataPets}
+        data={
+          selectedCategory
+            ? dataPets.filter((pet) => pet.category === selectedCategory)
+            : dataPets
+        }
         renderItem={({ item }) => <PetItem pet={item} />}
         keyExtractor={(_item, index) => index.toString()}
         contentContainerStyle={{
