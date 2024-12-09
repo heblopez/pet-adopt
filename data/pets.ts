@@ -1,4 +1,4 @@
-export const dataPets = [
+export const petsData = [
   {
     petId: 1,
     name: "Zeus",
@@ -57,6 +57,7 @@ export const dataPets = [
       "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=922&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
+    petId: 4,
     name: "Nemo",
     category: "Fish",
     imageUrl:
@@ -75,6 +76,7 @@ export const dataPets = [
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
+    petId: 5,
     name: "Benji",
     category: "Dogs",
     imageUrl:
@@ -93,6 +95,7 @@ export const dataPets = [
       "https://images.unsplash.com/photo-1521341957697-b93449760f30?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
+    petId: 6,
     name: "Rex",
     category: "Dogs",
     imageUrl:

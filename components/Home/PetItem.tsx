@@ -26,10 +26,10 @@ export default function PetItem({ pet }: { pet: Pet }) {
 
 const styles = StyleSheet.create({
   wrapper: {
+    width: "auto",
     padding: 12,
     backgroundColor: Colors.white,
     borderRadius: 16,
-    marginRight: 16,
   },
   image: {
     width: 140,

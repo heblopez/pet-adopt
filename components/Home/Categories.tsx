@@ -9,7 +9,7 @@ import {
   FlatList,
 } from "react-native";
 import PetItem from "./PetItem";
-import { dataPets } from "@/data/pets";
+import { petsData } from "@/data/pets";
 
 export default function Categories() {
   const categories = [
@@ -71,13 +71,14 @@ export default function Categories() {
       <FlatList
         data={
           selectedCategory
-            ? dataPets.filter((pet) => pet.category === selectedCategory)
-            : dataPets
+            ? petsData.filter((pet) => pet.category === selectedCategory)
+            : petsData
         }
         renderItem={({ item }) => <PetItem pet={item} />}
         keyExtractor={(_item, index) => index.toString()}
         contentContainerStyle={{
           flexGrow: 1,
+          gap: 18,
         }}
         horizontal
         showsHorizontalScrollIndicator={false}
