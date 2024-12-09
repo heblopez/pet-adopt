@@ -1,4 +1,4 @@
-import { View, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import Header from "@/components/Home/Header";
 import Colors from "@/constants/Colors";
 import Slider from "@/components/Home/Slider";
