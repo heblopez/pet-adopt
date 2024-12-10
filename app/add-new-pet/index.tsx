@@ -7,10 +7,21 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import Colors from "@/constants/Colors";
+import { newPetForm } from "@/types";
 
 export default function AddNewPet() {
+  const [data, setData] = useState({} as newPetForm);
+
+  const handleChange = (field: string, value: string) => {
+    setData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = () => {
+    console.log(data);
+  };
+
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Add new pet for adoption:</Text>
@@ -20,32 +31,57 @@ export default function AddNewPet() {
       />
       <View style={styles.inputGroup}>
         <Text style={styles.label}>Pet Name:</Text>
-        <TextInput style={styles.input} placeholder="Doggy" />
+        <TextInput
+          style={styles.input}
+          placeholder="Doggy"
+          onChangeText={(value) => handleChange("name", value)}
+        />
       </View>
       <View style={styles.inputGroup}>
         <Text style={styles.label}>Breed:</Text>
-        <TextInput style={styles.input} placeholder="Golden Retriever" />
+        <TextInput
+          style={styles.input}
+          placeholder="Golden Retriever"
+          onChangeText={(value) => handleChange("breed", value)}
+        />
       </View>
       <View style={styles.inputGroup}>
         <Text style={styles.label}>Age (yrs):</Text>
-        <TextInput style={styles.input} placeholder="2" />
+        <TextInput
+          style={styles.input}
+          placeholder="2"
+          onChangeText={(value) => handleChange("age", value)}
+        />
       </View>
       <View style={styles.inputGroup}>
         <Text style={styles.label}>Weight (kg):</Text>
-        <TextInput style={styles.input} placeholder="17" />
+        <TextInput
+          style={styles.input}
+          placeholder="17"
+          onChangeText={(value) => handleChange("weight", value)}
+        />
       </View>
       <View style={styles.inputGroup}>
         <Text style={styles.label}>Location:</Text>
-        <TextInput style={styles.input} placeholder="Lima, Peru" />
+        <TextInput
+          style={styles.input}
+          placeholder="Lima, Peru"
+          onChangeText={(value) => handleChange("location", value)}
+        />
       </View>
       <View style={styles.inputGroup}>
         <Text style={styles.label}>About:</Text>
         <TextInput
           style={styles.input}
           placeholder="A cool dog that loves to play"
+          onChangeText={(value) => handleChange("about", value)}
         />
       </View>
-      <TouchableOpacity style={styles.button} activeOpacity={0.77}>
+      <TouchableOpacity
+        style={styles.button}
+        activeOpacity={0.77}
+        onPress={handleSubmit}
+      >
         <Text style={styles.buttonText}>Submit</Text>
       </TouchableOpacity>
     </ScrollView>

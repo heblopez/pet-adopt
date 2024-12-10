@@ -8,7 +8,7 @@ export const petsData = [
     breed: "Labrador Retriever",
     age: 4,
     location: "New York, NY 10010",
-    sex: "Male",
+    gender: "Male",
     weight: 12,
     about:
       "Zeus is a friendly and outgoing dog who loves to play with his owners. He is a loyal companion and always willing to help out with any tasks or chores that come his way. Zeus is a great companion and a loyal friend.",
@@ -27,7 +27,7 @@ export const petsData = [
     breed: "Bengal",
     age: 3,
     location: "New York, NY 10010",
-    sex: "Female",
+    gender: "Female",
     weight: 4.5,
     about:
       "Kitty is a sweet and affectionate cat who loves to play with her owners. She is a loyal companion and always willing to help out with any tasks or chores that come her way. Kitty is a great companion and a loyal friend.",
@@ -46,7 +46,7 @@ export const petsData = [
     breed: "Syrian",
     age: 1,
     location: "Los Angeles, CA 90010",
-    sex: "Male",
+    gender: "Male",
     weight: 1,
     about:
       "Hamlet is a friendly and outgoing hamster who loves to play with his owners. He is a loyal companion and always willing to help out with any tasks or chores that come his way. Hamlet is a great companion and a loyal friend.",
@@ -65,7 +65,7 @@ export const petsData = [
     breed: "Clownfish",
     age: 2,
     location: "Miami, FL 33139",
-    sex: "Female",
+    gender: "Female",
     weight: 0.5,
     about:
       "Nemo is a friendly and outgoing fish who loves to play with his owners. He is a loyal companion and always willing to help out with any tasks or chores that come his way. Nemo is a great companion and a loyal friend.",
@@ -84,7 +84,7 @@ export const petsData = [
     breed: "Jack Russel Terrier",
     age: 2,
     location: "New York, NY 10010",
-    sex: "Male",
+    gender: "Male",
     weight: 7,
     about:
       "Benji is a friendly and outgoing dog who loves to play with his owners. He is a loyal companion and always willing to help out with any tasks or chores that come his way. Benji is a great companion and a loyal friend.",
@@ -103,7 +103,7 @@ export const petsData = [
     breed: "German Shepherd",
     age: 1,
     location: "New York, NY 10010",
-    sex: "Male",
+    gender: "Male",
     weight: 4,
     about:
       "Rex is a friendly and outgoing dog who loves to play with his owners. He is a loyal companion and always willing to help out with any tasks or chores that come his way. Rex is a great companion and a loyal friend.",

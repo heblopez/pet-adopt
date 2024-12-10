@@ -27,12 +27,12 @@ export default function PetSubInfo({ pet }: { pet: Pet }) {
       </View>
       <View style={styles.wrapperProp}>
         <Image
-          source={require("../../assets/images/sex.png")}
+          source={require("../../assets/images/gender.png")}
           style={styles.icon}
         />
         <View style={styles.wrapperText}>
-          <Text style={styles.textProp}>Sex</Text>
-          <Text style={styles.textValue}>{pet.sex}</Text>
+          <Text style={styles.textProp}>Gender</Text>
+          <Text style={styles.textValue}>{pet.gender}</Text>
         </View>
       </View>
       <View style={styles.wrapperProp}>

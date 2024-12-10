@@ -6,11 +6,21 @@ export interface Pet {
   breed: string;
   age: number;
   location: string;
-  sex: string;
+  gender: string;
   weight: number;
   about: string;
   userId: number;
   userFullName: string;
   userEmail: string;
   userImageUrl: string;
+}
+
+export interface newPetForm {
+  name: string;
+  breed: string;
+  age: number;
+  gender: string;
+  weight: number;
+  location: string;
+  about: string;
 }
