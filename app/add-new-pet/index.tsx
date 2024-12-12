@@ -10,6 +10,7 @@ import {
 import React, { useState } from "react";
 import Colors from "@/constants/Colors";
 import { newPetForm } from "@/types";
+import CustomPicker from "@/components/PetDetails/CustomPicker";
 
 export default function AddNewPet() {
   const [data, setData] = useState({} as newPetForm);
@@ -38,6 +39,19 @@ export default function AddNewPet() {
         />
       </View>
       <View style={styles.inputGroup}>
+        <Text style={styles.label}>Pet Category:</Text>
+        <CustomPicker
+          selectedValue={data.category}
+          onValueChange={(value) => handleChange("category", value)}
+          options={[
+            { label: "Dogs", value: "Dogs" },
+            { label: "Cats", value: "Cats" },
+            { label: "Hamsters", value: "Hamsters" },
+            { label: "Fish", value: "Fish" },
+          ]}
+        />
+      </View>
+      <View style={styles.inputGroup}>
         <Text style={styles.label}>Breed:</Text>
         <TextInput
           style={styles.input}
@@ -51,6 +65,17 @@ export default function AddNewPet() {
           style={styles.input}
           placeholder="2"
           onChangeText={(value) => handleChange("age", value)}
+        />
+      </View>
+      <View style={styles.inputGroup}>
+        <Text style={styles.label}>Gender:</Text>
+        <CustomPicker
+          selectedValue={data.gender}
+          onValueChange={(value) => handleChange("gender", value)}
+          options={[
+            { label: "Male", value: "Male" },
+            { label: "Female", value: "Female" },
+          ]}
         />
       </View>
       <View style={styles.inputGroup}>
@@ -131,8 +156,9 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
     padding: 12,
     borderRadius: 16,
-    marginVertical: 16,
+    marginTop: 16,
     alignItems: "center",
+    marginBottom: 36,
   },
   buttonText: {
     fontFamily: "Pally-Bold",

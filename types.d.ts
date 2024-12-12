@@ -17,6 +17,7 @@ export interface Pet {
 
 export interface newPetForm {
   name: string;
+  category: string;
   breed: string;
   age: number;
   gender: string;
