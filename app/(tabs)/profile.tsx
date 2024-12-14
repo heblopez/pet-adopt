@@ -7,17 +7,31 @@ import {
   Pressable,
 } from "react-native";
 import React from "react";
-import { useUser } from "@clerk/clerk-expo";
+import { useUser, useAuth } from "@clerk/clerk-expo";
 import Colors from "@/constants/Colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { Href, useRouter } from "expo-router";
 
 export default function Profile() {
+  const router = useRouter();
+
   const { user } = useUser();
+  const { signOut } = useAuth();
+
   const options = [
     { label: "Add New Pet", icon: "add-circle", path: "/add-new-pet" },
     { label: "My Pets", icon: "paw", path: "/my-pets" },
     { label: "Log Out", icon: "exit", path: "/logout" },
   ];
+
+  function handlePress(path: string) {
+    if (path === "/logout") {
+      signOut();
+      router.push("/login");
+      return;
+    }
+    router.push(path as Href);
+  }
 
   return (
     <View style={styles.container}>
@@ -36,7 +50,7 @@ export default function Profile() {
         renderItem={({ item }) => (
           <Pressable
             style={styles.optionWrapper}
-            onPress={() => console.log(item.path)}
+            onPress={() => handlePress(item.path)}
           >
             <Ionicons
               name={item.icon as keyof typeof Ionicons.glyphMap}
