@@ -6,14 +6,17 @@ import {
   TextInput,
   ScrollView,
   TouchableOpacity,
+  Pressable,
 } from "react-native";
 import React, { useState } from "react";
 import Colors from "@/constants/Colors";
 import { newPetForm } from "@/types";
 import CustomPicker from "@/components/PetDetails/CustomPicker";
+import * as ImagePicker from "expo-image-picker";
 
 export default function AddNewPet() {
   const [data, setData] = useState({} as newPetForm);
+  const [image, setImage] = useState<string | null>(null);
 
   const handleChange = (field: string, value: string) => {
     setData((prev) => ({ ...prev, [field]: value }));
@@ -23,13 +26,40 @@ export default function AddNewPet() {
     console.log(data);
   };
 
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ["images"],
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
+
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Add new pet for adoption:</Text>
-      <Image
-        source={require("@/assets/images/paw-placeholder.png")}
-        style={styles.image}
-      />
+      <Pressable onPress={pickImage} style={styles.imageContainer}>
+        {image ? (
+          <Image
+            source={{ uri: image }}
+            style={[
+              styles.image,
+              { backgroundColor: "transparent", borderColor: "transparent" },
+            ]}
+          />
+        ) : (
+          <Image
+            source={require("@/assets/images/paw-placeholder.png")}
+            style={styles.image}
+          />
+        )}
+      </Pressable>
       <View style={styles.inputGroup}>
         <Text style={styles.label}>Pet Name:</Text>
         <TextInput
@@ -127,9 +157,10 @@ const styles = StyleSheet.create({
     marginBlock: 16,
     color: Colors.primary,
   },
+  imageContainer: { width: 120, height: 120, marginInline: "auto" },
   image: {
-    width: 120,
-    height: 120,
+    width: "100%",
+    height: "100%",
     borderRadius: 12,
     resizeMode: "cover",
     padding: 8,
