@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     backgroundColor: Colors.background,
-    padding: 24,
-    marginTop: 18,
+    paddingInline: 24,
+    paddingBlock: 48,
   },
   title: {
     fontFamily: "Pally-Bold",
@@ -44,5 +44,6 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     rowGap: 24,
     justifyContent: "space-between",
+    marginBottom: 24,
   },
 });
