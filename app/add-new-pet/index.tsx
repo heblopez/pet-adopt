@@ -95,6 +95,7 @@ export default function AddNewPet() {
           style={styles.input}
           placeholder="2"
           onChangeText={(value) => handleChange("age", value)}
+          keyboardType="number-pad"
         />
       </View>
       <View style={styles.inputGroup}>
@@ -114,6 +115,7 @@ export default function AddNewPet() {
           style={styles.input}
           placeholder="17"
           onChangeText={(value) => handleChange("weight", value)}
+          keyboardType="number-pad"
         />
       </View>
       <View style={styles.inputGroup}>
