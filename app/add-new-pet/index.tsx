@@ -13,16 +13,20 @@ import Colors from "@/constants/Colors";
 import { newPetForm } from "@/types";
 import CustomPicker from "@/components/PetDetails/CustomPicker";
 import * as ImagePicker from "expo-image-picker";
+import * as FileSystem from "expo-file-system";
 
 export default function AddNewPet() {
   const [data, setData] = useState({} as newPetForm);
   const [image, setImage] = useState<string | null>(null);
 
+  const cloudName = process.env.EXPO_PUBLIC_CLOUDINARY_CLOUD_NAME!;
+
   const handleChange = (field: string, value: string) => {
     setData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    data.imageUrl = await uploadImage();
     console.log(data);
   };
 
@@ -34,10 +38,45 @@ export default function AddNewPet() {
       quality: 1,
     });
 
-    console.log(result);
-
     if (!result.canceled) {
       setImage(result.assets[0].uri);
+    }
+  };
+
+  const uploadImage = async () => {
+    if (image) {
+      try {
+        const fileUri = image.replace("file://", "");
+        const fileBlob = await FileSystem.readAsStringAsync(fileUri, {
+          encoding: FileSystem.EncodingType.Base64,
+        });
+
+        const formData = new FormData();
+        formData.append("file", `data:image/jpeg;base64,${fileBlob}`);
+        formData.append("upload_preset", "pet_adopt");
+
+        const uploadResponse = await fetch(
+          `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+          {
+            method: "POST",
+            body: formData,
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        if (!uploadResponse.ok) {
+          console.error("Failed to upload image:", uploadResponse);
+          throw new Error(`HTTP error: ${uploadResponse.status}`);
+        }
+
+        const data = await uploadResponse.json();
+        return data.secure_url;
+      } catch (error) {
+        console.error("Error uploading image:", error);
+        return "";
+      }
     }
   };
 

@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   wrapperProp: {
     padding: 16,
     display: "flex",
-    width: 164,
+    width: 160,
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",

@@ -24,4 +24,5 @@ export interface newPetForm {
   weight: number;
   location: string;
   about: string;
+  imageUrl: string;
 }
