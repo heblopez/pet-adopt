@@ -1,5 +1,5 @@
 import Colors from "@/constants/Colors";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -9,7 +9,8 @@ import {
   FlatList,
 } from "react-native";
 import PetItem from "./PetItem";
-import { petsData } from "@/data/pets";
+import { getPets } from "@/services/pet.service";
+import { Pet } from "@/types";
 
 export default function Categories() {
   const categories = [
@@ -21,6 +22,14 @@ export default function Categories() {
     },
     { name: "Fish", imageUrl: require("../../assets/images/fish-icon.png") },
   ];
+
+  const [petsData, setPetsData] = useState([] as Pet[]);
+
+  useEffect(() => {
+    getPets().then((data) => {
+      setPetsData(data);
+    });
+  }, []);
 
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
