@@ -1,22 +1,13 @@
 import { useUser } from "@clerk/clerk-expo";
-import { Link, Redirect, useRootNavigationState } from "expo-router";
-import { useEffect } from "react";
-import { Text, View } from "react-native";
+import { Redirect } from "expo-router";
+import { View } from "react-native";
 
 export default function Index() {
-  const rootNavigationState = useRootNavigationState();
+  const { user, isLoaded } = useUser();
 
-  const checkNavLoaded = () => {
-    if (!rootNavigationState.key) {
-      return null;
-    }
-  };
-
-  useEffect(() => {
-    checkNavLoaded();
-  }, []);
-
-  const { user } = useUser();
+  if (!isLoaded) {
+    return null;
+  }
 
   return (
     <View
