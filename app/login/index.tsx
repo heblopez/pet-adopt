@@ -2,8 +2,9 @@ import { useCallback, useEffect } from "react";
 import { View, Text, Image, Pressable } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import * as Linking from "expo-linking";
-import { useOAuth } from "@clerk/clerk-expo";
+import { useOAuth, useUser } from "@clerk/clerk-expo";
 import Colors from "@/constants/Colors";
+import { authUser } from "@/services/auth.service";
 
 export const useWarmUpBrowser = () => {
   useEffect(() => {
@@ -22,18 +23,27 @@ export default function Login() {
   const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
   const redirectUrl = Linking.createURL("/(tabs)/home", { scheme: "myapp" });
 
+  const { user } = useUser();
+
   const onPress = useCallback(async () => {
     try {
-      const { createdSessionId, signIn, signUp, setActive } =
-        await startOAuthFlow({
-          redirectUrl,
-        });
+      const { createdSessionId, setActive } = await startOAuthFlow({
+        redirectUrl,
+      });
 
       if (createdSessionId) {
         setActive!({ session: createdSessionId });
+        if (user) {
+          await authUser({
+            userId: user.id,
+            email: user.primaryEmailAddress?.emailAddress!,
+            firstName: user.firstName || "",
+            lastName: user.lastName || "",
+            phoneNumber: user.primaryPhoneNumber?.phoneNumber || "",
+            avatarUrl: user.imageUrl || "",
+          });
+        }
         Linking.openURL(redirectUrl);
-      } else {
-        // Use signIn or signUp for next steps such as MFA
       }
     } catch (err) {
       console.error("OAuth error", err);

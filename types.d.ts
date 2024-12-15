@@ -15,7 +15,7 @@ export interface Pet {
   userImageUrl: string;
 }
 
-export interface newPetForm {
+export interface NewPetForm {
   name: string;
   category: string;
   breed: string;
@@ -25,4 +25,13 @@ export interface newPetForm {
   location: string;
   about: string;
   imageUrl: string;
+}
+
+export interface AuthUserData {
+  email: string;
+  userId: string;
+  firstName: string;
+  lastName?: string;
+  phoneNumber?: string;
+  avatarUrl?: string;
 }
