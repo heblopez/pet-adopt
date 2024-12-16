@@ -2,6 +2,7 @@ import { Stack } from "expo-router";
 import { useFonts } from "expo-font";
 import { ClerkProvider } from "@clerk/clerk-expo";
 import * as SecureStore from "expo-secure-store";
+import { FavoritesProvider } from "@/context/FavoritesProvider";
 
 const tokenCache = {
   async getToken(key: string) {
@@ -52,28 +53,30 @@ export default function RootLayout() {
 
   return (
     <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
-      <Stack>
-        <Stack.Screen name="index" />
-        <Stack.Screen name="login/index" options={{ headerShown: false }} />
-        <Stack.Screen
-          name="(tabs)"
-          options={{ headerShown: false, headerTitle: "" }}
-        />
-        <Stack.Screen
-          name="pet-details/index"
-          options={{
-            headerTransparent: true,
-            headerTitle: "",
-          }}
-        />
-        <Stack.Screen
-          name="add-new-pet/index"
-          options={{
-            headerTransparent: true,
-            headerTitle: "Add New Pet",
-          }}
-        />
-      </Stack>
+      <FavoritesProvider>
+        <Stack>
+          <Stack.Screen name="index" />
+          <Stack.Screen name="login/index" options={{ headerShown: false }} />
+          <Stack.Screen
+            name="(tabs)"
+            options={{ headerShown: false, headerTitle: "" }}
+          />
+          <Stack.Screen
+            name="pet-details/index"
+            options={{
+              headerTransparent: true,
+              headerTitle: "",
+            }}
+          />
+          <Stack.Screen
+            name="add-new-pet/index"
+            options={{
+              headerTransparent: true,
+              headerTitle: "Add New Pet",
+            }}
+          />
+        </Stack>
+      </FavoritesProvider>
     </ClerkProvider>
   );
 }

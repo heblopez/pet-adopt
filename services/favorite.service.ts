@@ -19,6 +19,7 @@ export const getFavoritePets = async (token: string) => {
       userFullName: `${fav.pet.owner.firstName} ${fav.pet.owner.lastName}`,
       userEmail: fav.pet.owner.email,
       userImageUrl: fav.pet.owner.avatarUrl,
+      owner: undefined,
     }));
     return dataParsed;
   } catch (error) {
@@ -45,6 +46,7 @@ export const newFavoritePet = async (petId: number, token: string) => {
       userFullName: `${data.data.pet.owner.firstName} ${data.data.pet.owner.lastName}`,
       userEmail: data.data.pet.owner.email,
       userImageUrl: data.data.pet.owner.avatarUrl,
+      owner: undefined,
     };
     return favParsed;
   } catch (error) {
