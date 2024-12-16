@@ -65,7 +65,7 @@ export const petsData = [
     breed: "Clownfish",
     age: 2,
     location: "Miami, FL 33139",
-    gender: "Female",
+    gender: "Male",
     weight: 0.5,
     about:
       "Nemo is a friendly and outgoing fish who loves to play with his owners. He is a loyal companion and always willing to help out with any tasks or chores that come his way. Nemo is a great companion and a loyal friend.",

@@ -21,6 +21,7 @@ import { useRouter } from "expo-router";
 export default function AddNewPet() {
   const [data, setData] = useState({} as NewPetForm);
   const [image, setImage] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const cloudName = process.env.EXPO_PUBLIC_CLOUDINARY_CLOUD_NAME!;
 
@@ -42,9 +43,11 @@ export default function AddNewPet() {
       return;
     }
 
+    setIsLoading(true);
     data.imageUrl = await uploadImage();
     const userToken = (await fetchToken()) as string;
     await registerPet(data, userToken);
+    setIsLoading(false);
     router.push("/(tabs)/home");
   };
 
@@ -196,7 +199,9 @@ export default function AddNewPet() {
         activeOpacity={0.77}
         onPress={handleSubmit}
       >
-        <Text style={styles.buttonText}>Submit</Text>
+        <Text style={styles.buttonText} disabled={isLoading}>
+          {isLoading ? "Loading..." : "Submit"}
+        </Text>
       </TouchableOpacity>
     </ScrollView>
   );
