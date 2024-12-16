@@ -43,3 +43,29 @@ export const registerPet = async (pet: NewPetForm, token: string) => {
     return null;
   }
 };
+
+export const getMyPets = async (token: string) => {
+  try {
+    const response = await fetch(`${API_PETS_URL}/my-pets`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (!response.ok) {
+      throw new Error("Failed to fetch my pets");
+    }
+    const data = await response.json();
+    const dataParsed = data.data.map((pet: Pet) => ({
+      ...pet,
+      userId: pet.ownerId,
+      userFullName: `${pet.owner.firstName} ${pet.owner.lastName}`,
+      userEmail: pet.owner.email,
+      userImageUrl: pet.owner.avatarUrl,
+      owner: undefined,
+    }));
+    return dataParsed;
+  } catch (error) {
+    console.error("Error fetching my pets: ", error);
+    return null;
+  }
+};
