@@ -1,5 +1,5 @@
 import Colors from "@/constants/Colors";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -11,6 +11,7 @@ import {
 import PetItem from "./PetItem";
 import { getPets } from "@/services/pet.service";
 import { Pet } from "@/types";
+import { useFocusEffect } from "expo-router";
 
 export default function Categories() {
   const categories = [
@@ -30,6 +31,14 @@ export default function Categories() {
       setPetsData(data);
     });
   }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      getPets().then((data) => {
+        setPetsData(data);
+      });
+    }, [])
+  );
 
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 

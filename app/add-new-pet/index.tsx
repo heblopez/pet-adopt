@@ -10,24 +10,42 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import Colors from "@/constants/Colors";
-import { newPetForm } from "@/types";
+import { NewPetForm } from "@/types";
 import CustomPicker from "@/components/PetDetails/CustomPicker";
 import * as ImagePicker from "expo-image-picker";
 import * as FileSystem from "expo-file-system";
+import { registerPet } from "@/services/pet.service";
+import { useAuth } from "@clerk/clerk-expo";
+import { useRouter } from "expo-router";
 
 export default function AddNewPet() {
-  const [data, setData] = useState({} as newPetForm);
+  const [data, setData] = useState({} as NewPetForm);
   const [image, setImage] = useState<string | null>(null);
 
   const cloudName = process.env.EXPO_PUBLIC_CLOUDINARY_CLOUD_NAME!;
+
+  const { getToken } = useAuth();
+  const router = useRouter();
+
+  const fetchToken = async () => {
+    const token = await getToken();
+    return token;
+  };
 
   const handleChange = (field: string, value: string) => {
     setData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleSubmit = async () => {
+    if (!image || Object.keys(data).length < 8) {
+      alert("All fields and an image are required, please complete them");
+      return;
+    }
+
     data.imageUrl = await uploadImage();
-    console.log(data);
+    const userToken = (await fetchToken()) as string;
+    await registerPet(data, userToken);
+    router.push("/(tabs)/home");
   };
 
   const pickImage = async () => {
