@@ -6,7 +6,8 @@ export const getPets = async () => {
   try {
     const response = await fetch(API_PETS_URL);
     if (!response.ok) {
-      throw new Error("Failed to fetch pets");
+      const jsonError = await response.json();
+      throw new Error(jsonError.error);
     }
     const data = await response.json();
     const dataParsed = data.data.map((pet: Pet) => ({
@@ -34,7 +35,8 @@ export const registerPet = async (pet: NewPetForm, token: string) => {
       body: JSON.stringify(pet),
     });
     if (!response.ok) {
-      throw new Error("Failed to register pet");
+      const jsonError = await response.json();
+      throw new Error(jsonError.error);
     }
     const data = await response.json();
     return data.data;
@@ -52,7 +54,8 @@ export const getMyPets = async (token: string) => {
       },
     });
     if (!response.ok) {
-      throw new Error("Failed to fetch my pets");
+      const jsonError = await response.json();
+      throw new Error(jsonError.error);
     }
     const data = await response.json();
     const dataParsed = data.data.map((pet: Pet) => ({

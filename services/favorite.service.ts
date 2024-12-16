@@ -6,11 +6,12 @@ export const getFavoritePets = async (token: string) => {
   try {
     const response = await fetch(API_FAVORITE_URL, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        authorization: `Bearer ${token}`,
       },
     });
     if (!response.ok) {
-      throw new Error("Failed to fetch favorite pets");
+      const jsonError = await response.json();
+      throw new Error(jsonError.error);
     }
     const data = await response.json();
     const dataParsed = data.data.map((fav: FavoritePet) => ({
@@ -37,7 +38,8 @@ export const newFavoritePet = async (petId: number, token: string) => {
       },
     });
     if (!response.ok) {
-      throw new Error("Failed to add favorite pet");
+      const jsonError = await response.json();
+      throw new Error(jsonError.error);
     }
     const data = await response.json();
     const favParsed = {
@@ -64,7 +66,8 @@ export const deleteFavoritePet = async (petId: number, token: string) => {
       },
     });
     if (!response.ok) {
-      throw new Error("Failed to remove favorite pet");
+      const jsonError = await response.json();
+      throw new Error(jsonError.error);
     }
     const data = await response.json();
     return data.data;

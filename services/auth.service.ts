@@ -12,7 +12,8 @@ export const authUser = async (userData: AuthUserData) => {
       body: JSON.stringify(userData),
     });
     if (!response.ok) {
-      throw new Error("Failed to authenticate user");
+      const jsonError = await response.json();
+      throw new Error(jsonError.error);
     }
     const data = await response.json();
     console.log("Authenticated user:", data.data);
