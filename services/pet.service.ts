@@ -9,14 +9,13 @@ export const getPets = async () => {
       throw new Error("Failed to fetch pets");
     }
     const data = await response.json();
-    const dataParsed = data.data.map(
-      (pet: Pet & { owner: Record<string, any> }) => ({
-        ...pet,
-        userFullName: `${pet.owner.firstName} ${pet.owner.lastName}`,
-        userEmail: pet.owner.email,
-        userImageUrl: pet.owner.avatarUrl,
-      })
-    );
+    const dataParsed = data.data.map((pet: Pet) => ({
+      ...pet,
+      userId: pet.ownerId,
+      userFullName: `${pet.owner.firstName} ${pet.owner.lastName}`,
+      userEmail: pet.owner.email,
+      userImageUrl: pet.owner.avatarUrl,
+    }));
     return dataParsed;
   } catch (error) {
     console.error("Error fetching pets: ", error);

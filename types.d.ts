@@ -13,6 +13,13 @@ export interface Pet {
   userFullName: string;
   userEmail: string;
   userImageUrl: string;
+  ownerId: number;
+  owner: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    avatarUrl: string;
+  };
 }
 
 export interface NewPetForm {
