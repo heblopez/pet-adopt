@@ -1,23 +1,32 @@
 import { View, Text, StyleSheet, ScrollView } from "react-native";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Colors from "@/constants/Colors";
 import PetItem from "@/components/Home/PetItem";
 import { getFavoritePets } from "@/services/favorite.service";
 import { Pet } from "@/types";
 import { useAuth } from "@clerk/clerk-expo";
+import { useFocusEffect } from "expo-router";
 
 export default function Favorite() {
   const [favoritePets, setFavoritePets] = useState<Pet[]>([]);
 
   const { getToken } = useAuth();
 
+  const fetchFavorites = async () => {
+    const token = await getToken();
+    const data = await getFavoritePets(token as string);
+    setFavoritePets(data);
+  };
+
   useEffect(() => {
-    getToken().then((token) => {
-      getFavoritePets(token as string).then((data) => {
-        setFavoritePets(data);
-      });
-    });
+    fetchFavorites();
   }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      fetchFavorites();
+    }, [])
+  );
 
   return (
     <ScrollView style={styles.wrapper} showsVerticalScrollIndicator={false}>
