@@ -3,7 +3,7 @@ import { useRouter } from "expo-router";
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 import { Pet } from "@/types";
 
-export default function PetItem({ pet }: { pet: Pet }) {
+export default function PetItem({ pet }: { pet: Omit<Pet, "owner"> }) {
   const router = useRouter();
   return (
     <Pressable
@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     padding: 12,
     backgroundColor: Colors.white,
     borderRadius: 16,
+    maxWidth: 164,
   },
   image: {
     width: 140,
