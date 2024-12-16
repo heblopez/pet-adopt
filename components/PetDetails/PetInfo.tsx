@@ -1,7 +1,7 @@
 import { View, Text, Image, StyleSheet } from "react-native";
 import { Pet } from "@/types";
 import Colors from "@/constants/Colors";
-import AntDesign from "@expo/vector-icons/AntDesign";
+import FavoriteButton from "./FavoriteButton";
 
 export default function PetInfo({ pet }: { pet: Pet }) {
   return (
@@ -12,7 +12,7 @@ export default function PetInfo({ pet }: { pet: Pet }) {
           <Text style={styles.name}>{pet.name}</Text>
           <Text style={styles.location}>{pet.location}</Text>
         </View>
-        <AntDesign name="hearto" size={28} color={Colors.secondary} />
+        <FavoriteButton pet={pet} />
       </View>
     </View>
   );
