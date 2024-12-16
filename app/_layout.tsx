@@ -3,6 +3,7 @@ import { useFonts } from "expo-font";
 import { ClerkProvider } from "@clerk/clerk-expo";
 import * as SecureStore from "expo-secure-store";
 import { FavoritesProvider } from "@/context/FavoritesProvider";
+import { View } from "react-native";
 
 const tokenCache = {
   async getToken(key: string) {
@@ -55,7 +56,7 @@ export default function RootLayout() {
     <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
       <FavoritesProvider>
         <Stack>
-          <Stack.Screen name="index" />
+          <Stack.Screen name="index" options={{ headerShown: false }} />
           <Stack.Screen name="login/index" options={{ headerShown: false }} />
           <Stack.Screen
             name="(tabs)"

@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from "react";
-import { View, Text, Image, Pressable } from "react-native";
+import { View, Text, Image, Pressable, Platform } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import * as Linking from "expo-linking";
 import { useOAuth, useUser } from "@clerk/clerk-expo";
@@ -8,6 +8,7 @@ import { authUser } from "@/services/auth.service";
 
 export const useWarmUpBrowser = () => {
   useEffect(() => {
+    if (Platform.OS === "web") return;
     void WebBrowser.warmUpAsync();
     return () => {
       void WebBrowser.coolDownAsync();
@@ -56,9 +57,9 @@ export default function Login() {
         source={require("../../assets/images/login-image.jpg")}
         style={{
           width: "100%",
-          height: 399,
-          resizeMode: "cover",
-          marginTop: 50,
+          height: Platform.OS === "web" ? 499 : 399,
+          resizeMode: "contain",
+          marginTop: Platform.OS === "web" ? 0 : 48,
         }}
       />
       <View
@@ -97,6 +98,7 @@ export default function Login() {
             borderRadius: 12,
             width: "90%",
             marginTop: 48,
+            maxWidth: 599,
           }}
           onPress={onPress}
         >

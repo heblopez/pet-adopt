@@ -1,4 +1,4 @@
-import { View, FlatList, Image, Dimensions } from "react-native";
+import { View, FlatList, Image, Dimensions, Platform } from "react-native";
 
 export default function Slider() {
   const images = [
@@ -8,7 +8,7 @@ export default function Slider() {
   ];
 
   return (
-    <View style={{ marginBlock: 8 }}>
+    <View style={{ marginBlock: 8, flex: 1 }}>
       <FlatList
         data={images}
         horizontal
@@ -17,7 +17,9 @@ export default function Slider() {
           <Image
             source={item}
             style={{
-              width: Dimensions.get("screen").width * 0.88,
+              width:
+                Dimensions.get("screen").width *
+                (Platform.OS === "web" ? 0.317 : 0.88),
               height: 177,
               borderRadius: 16,
               marginRight: 16,
