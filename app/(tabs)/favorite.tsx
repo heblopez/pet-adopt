@@ -1,22 +1,29 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  useWindowDimensions,
-  Dimensions,
-} from "react-native";
-import React from "react";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { useEffect, useState } from "react";
 import Colors from "@/constants/Colors";
-import { petsData } from "@/data/pets";
 import PetItem from "@/components/Home/PetItem";
+import { getFavoritePets } from "@/services/favorite.service";
+import { Pet } from "@/types";
+import { useAuth } from "@clerk/clerk-expo";
 
 export default function Favorite() {
+  const [favoritePets, setFavoritePets] = useState<Pet[]>([]);
+
+  const { getToken } = useAuth();
+
+  useEffect(() => {
+    getToken().then((token) => {
+      getFavoritePets(token as string).then((data) => {
+        setFavoritePets(data);
+      });
+    });
+  }, []);
+
   return (
     <ScrollView style={styles.wrapper} showsVerticalScrollIndicator={false}>
       <Text style={styles.title}>Favorite Pets</Text>
       <View style={styles.grid}>
-        {petsData.map((pet) => (
+        {favoritePets?.map((pet) => (
           <PetItem key={pet.petId} pet={pet} />
         ))}
       </View>

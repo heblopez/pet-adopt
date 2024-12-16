@@ -42,3 +42,11 @@ export interface AuthUserData {
   phoneNumber?: string;
   avatarUrl?: string;
 }
+
+export interface FavoritePet {
+  favoriteId: number;
+  petId: number;
+  userId: number;
+  createdAt: string;
+  pet: Omit<Pet, "userId" | "userFullName" | "userEmail" | "userImageUrl">;
+}
