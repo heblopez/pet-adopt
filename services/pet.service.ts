@@ -1,4 +1,4 @@
-import { NewPetForm } from "@/types";
+import { NewPetForm, Pet } from "@/types";
 
 const API_PETS_URL = `${process.env.EXPO_PUBLIC_API_URL}/api/pets`;
 
@@ -9,7 +9,15 @@ export const getPets = async () => {
       throw new Error("Failed to fetch pets");
     }
     const data = await response.json();
-    return data.data;
+    const dataParsed = data.data.map(
+      (pet: Pet & { owner: Record<string, any> }) => ({
+        ...pet,
+        userFullName: `${pet.owner.firstName} ${pet.owner.lastName}`,
+        userEmail: pet.owner.email,
+        userImageUrl: pet.owner.avatarUrl,
+      })
+    );
+    return dataParsed;
   } catch (error) {
     console.error("Error fetching pets: ", error);
     return null;
