@@ -75,6 +75,13 @@ export default function RootLayout() {
               headerTitle: "Add New Pet",
             }}
           />
+          <Stack.Screen
+            name="my-pets/index"
+            options={{
+              headerTransparent: true,
+              headerTitle: "My Pets",
+            }}
+          />
         </Stack>
       </FavoritesProvider>
     </ClerkProvider>
