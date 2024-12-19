@@ -3,7 +3,6 @@ import { useFonts } from "expo-font";
 import { ClerkProvider } from "@clerk/clerk-expo";
 import * as SecureStore from "expo-secure-store";
 import { FavoritesProvider } from "@/context/FavoritesProvider";
-import { View } from "react-native";
 
 const tokenCache = {
   async getToken(key: string) {
@@ -46,6 +45,9 @@ export default function RootLayout() {
     "SF-Pro-Regular": require("../assets/fonts/SF-Pro-Text-Regular.otf"),
     "SF-Pro-Medium": require("../assets/fonts/SF-Pro-Text-Medium.otf"),
     "SF-Pro-Bold": require("../assets/fonts/SF-Pro-Text-Bold.otf"),
+    anticon: require("../assets/fonts/anticon.ttf"),
+    ionicons: require("../assets/fonts/ionicons.ttf"),
+    material: require("../assets/fonts/material.ttf"),
   });
 
   if (!loaded) {
